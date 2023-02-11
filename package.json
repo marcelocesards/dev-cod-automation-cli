@@ -25,6 +25,7 @@
   "homepage": "https://github.com/marcelocesards/sugar-drop#readme",
   "dependencies": {
     "boxen": "4.0",
-    "chalk": "2.4"
+    "chalk": "2.4",
+    "yargs": "13.2"
   }
 }
