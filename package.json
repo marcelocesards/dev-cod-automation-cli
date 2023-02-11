@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/marcelocesards/sugar-drop/issues"
   },
-  "homepage": "https://github.com/marcelocesards/sugar-drop#readme"
+  "homepage": "https://github.com/marcelocesards/sugar-drop#readme",
+  "dependencies": {
+    "boxen": "4.0",
+    "chalk": "2.4"
+  }
 }
