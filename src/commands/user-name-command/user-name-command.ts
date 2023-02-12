@@ -1,8 +1,9 @@
 import chalk from 'chalk';
 import boxen, { BorderStyle } from 'boxen';
 import yargs from 'yargs/yargs';
+import Command from '../command-executor/command';
 
-export default class UserNameCommand {
+export default class UserNameCommand implements Command {
 
     constructor(){
 

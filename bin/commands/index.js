@@ -3,9 +3,5 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const user_name_command_1 = __importDefault(require("./user-name-command"));
-function command() {
-    const userNameCommand = new user_name_command_1.default();
-    userNameCommand.process();
-}
-exports.default = { command };
+const command_executor_1 = __importDefault(require("./command-executor"));
+exports.default = command_executor_1.default;

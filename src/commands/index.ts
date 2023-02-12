@@ -1,9 +1,3 @@
-import UserNameCommand from './user-name-command';
+import CommandExecutor from "./command-executor";
 
-function command() {
-    
-    const userNameCommand = new UserNameCommand();
-    userNameCommand.process();
-}
-
-export default {command};
+export default CommandExecutor;

@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
+import CommandExecutor from "./commands";
+import UserNameCommand from "./commands/user-name-command";
+
 ////creating a box to show messages
-
-import chalk from 'chalk';
-import boxen, { BorderStyle } from 'boxen';
-import yargs from 'yargs/yargs';
-import commands from './commands';
-
-commands.command();
+CommandExecutor.execute([
+    new UserNameCommand()
+]);
