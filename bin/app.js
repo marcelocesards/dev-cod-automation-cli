@@ -40,7 +40,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const chalk_1 = __importDefault(require("chalk"));
 const boxen_1 = __importStar(require("boxen"));
 const yargs_1 = __importDefault(require("yargs/yargs"));
-const readline = __importStar(require("readline"));
+const console_1 = __importDefault(require("./console"));
 const greeting = chalk_1.default.white.bold("Hello!");
 const boxenOptions = {
     padding: 1,
@@ -59,24 +59,4 @@ const parse = (0, yargs_1.default)(process.argv)
     argv.name; // => No error, type: boolean
     console.log(argv.name);
 }))();
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-/*  rl.question('What is your name? ', (answer) => {
-  console.log(`Hi, ${answer}!`);
-  rl.close();
-});
-*/
-rl.setPrompt('> ');
-rl.prompt();
-rl.on('line', (input) => {
-    console.log(`Received: ${input}`);
-    if (input === "exit")
-        rl.close();
-    else
-        rl.prompt();
-});
-rl.on('close', () => {
-    console.log('Exiting the simulation...');
-});
+console_1.default.terminal();
