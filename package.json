@@ -2,9 +2,9 @@
   "name": "sugar-drop",
   "version": "1.0.0",
   "description": "Code generator",
-  "main": "bin/index.js",
+  "main": "bin/app.js",
   "bin": {
-    "sud": "./bin/index.js"
+    "sud": "./bin/app.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,6 +24,10 @@
   },
   "homepage": "https://github.com/marcelocesards/sugar-drop#readme",
   "dependencies": {
+    "@types/boxen": "^3.0.1",
+    "@types/chalk": "^2.2.0",
+    "@types/node": "^18.13.0",
+    "@types/yargs": "^17.0.22",
     "boxen": "4.0",
     "chalk": "2.4",
     "yargs": "13.2"
