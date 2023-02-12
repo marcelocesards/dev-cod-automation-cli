@@ -1,11 +1,9 @@
-
-import terminal from '../terminal';
-import UserNameCommand from './user-name-command/user-name-command';
+import UserNameCommand from './user-name-command';
 
 function command() {
     
     const userNameCommand = new UserNameCommand();
-    userNameCommand.readName();
+    userNameCommand.process();
 }
 
 export default {command};

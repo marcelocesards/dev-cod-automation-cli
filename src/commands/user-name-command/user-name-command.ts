@@ -8,7 +8,7 @@ export default class UserNameCommand {
 
     }
     
-    readName(){
+    process(){
         const greeting = chalk.white.bold("Hello!");
 
         const boxenOptions = {

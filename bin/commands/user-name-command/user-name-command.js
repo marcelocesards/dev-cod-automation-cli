@@ -41,7 +41,7 @@ const yargs_1 = __importDefault(require("yargs/yargs"));
 class UserNameCommand {
     constructor() {
     }
-    readName() {
+    process() {
         const greeting = chalk_1.default.white.bold("Hello!");
         const boxenOptions = {
             padding: 1,
