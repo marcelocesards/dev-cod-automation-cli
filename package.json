@@ -1,5 +1,5 @@
 {
-  "name": "sugar-drop",
+  "name": "dev-cod-automation",
   "version": "1.0.0",
   "description": "Code generator",
   "main": "bin/app.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marcelocesards/sugar-drop.git"
+    "url": "git+https://github.com/marcelocesards/dev-cod-automation.git"
   },
   "keywords": [
     "code",
@@ -20,9 +20,9 @@
   "author": "Marcelo Cesar",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/marcelocesards/sugar-drop/issues"
+    "url": "https://github.com/marcelocesards/dev-cod-automation/issues"
   },
-  "homepage": "https://github.com/marcelocesards/sugar-drop#readme",
+  "homepage": "https://github.com/marcelocesards/dev-cod-automation#readme",
   "dependencies": {
     "@types/boxen": "^3.0.1",
     "@types/chalk": "^2.2.0",
