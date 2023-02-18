@@ -20,11 +20,9 @@ export default class UserNameCommand implements Command {
 
     process(input?:string){
         let args = process.argv;
-        if(!input){
-            const inputString:any=input;
-            args=[]
-            args.push('n',inputString);
-            args.push(inputString);
+        if(input){
+            this.printName(input);
+            return;
         }
 
         const greeting = chalk.white.bold("Hello!");
@@ -48,8 +46,12 @@ export default class UserNameCommand implements Command {
         (async () => {
             const argv = await parse.argv;
             arguments
-            console.log(argv.name);
+            this.printName(argv.name);
         })();
+    }
+
+    printName(name:any){
+        console.log(name);
     }
    
 }

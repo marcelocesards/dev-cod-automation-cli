@@ -49,11 +49,10 @@ class UserNameCommand {
     }
     process(input) {
         let args = process.argv;
-        if (!input) {
-            const inputString = input;
-            args = [];
-            args.push('n', inputString);
-            args.push(inputString);
+        if (input) {
+            console.log('passei', input);
+            this.printName(input);
+            return;
         }
         const greeting = chalk_1.default.white.bold("Hello!");
         const boxenOptions = {
@@ -71,8 +70,12 @@ class UserNameCommand {
         (() => __awaiter(this, arguments, void 0, function* () {
             const argv = yield parse.argv;
             arguments;
-            console.log(argv.name);
+            this.printName(argv.name);
         }))();
+    }
+    printName(name) {
+        console.log('passei 2', name);
+        console.log(name);
     }
 }
 exports.default = UserNameCommand;
