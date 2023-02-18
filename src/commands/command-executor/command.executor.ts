@@ -16,7 +16,7 @@ export default class CommandExecutor {
         if(process.argv.slice(2).length > 0){
             commands.forEach(command=>command.process());
         } else {
-            const defaultTerminal = new DefaultTerminal();
+            const defaultTerminal = new DefaultTerminal(commands);
             defaultTerminal.init();
         }
     }

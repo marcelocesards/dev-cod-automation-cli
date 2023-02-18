@@ -17,7 +17,7 @@ class CommandExecutor {
             commands.forEach(command => command.process());
         }
         else {
-            const defaultTerminal = new terminal_1.default();
+            const defaultTerminal = new terminal_1.default(commands);
             defaultTerminal.init();
         }
     }

@@ -41,7 +41,20 @@ const yargs_1 = __importDefault(require("yargs/yargs"));
 class UserNameCommand {
     constructor() {
     }
-    process() {
+    getPromptMessage() {
+        return '> Informe o nome do autor: ';
+    }
+    getCommandName() {
+        return "user.name";
+    }
+    process(input) {
+        let args = process.argv;
+        if (!input) {
+            const inputString = input;
+            args = [];
+            args.push('n', inputString);
+            args.push(inputString);
+        }
         const greeting = chalk_1.default.white.bold("Hello!");
         const boxenOptions = {
             padding: 1,
@@ -52,7 +65,7 @@ class UserNameCommand {
         };
         const msgBox = (0, boxen_1.default)(greeting, boxenOptions);
         console.log(msgBox);
-        const parse = (0, yargs_1.default)(process.argv)
+        const parse = (0, yargs_1.default)(args)
             .option("n", { alias: "name",
             describe: "Your name", type: "string", demandOption: false });
         (() => __awaiter(this, arguments, void 0, function* () {

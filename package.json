@@ -2,9 +2,10 @@
   "name": "dev-cod-automation",
   "version": "1.0.0",
   "description": "Code generator",
-  "main": "bin/app.js",
+  "main": "bin/app",
+  "typings": "bin/index",
   "bin": {
-    "sud": "./bin/app.js"
+    "sud": "./bin/app"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,11 +26,13 @@
   "homepage": "https://github.com/marcelocesards/dev-cod-automation#readme",
   "dependencies": {
     "@types/boxen": "^3.0.1",
-    "@types/chalk": "^2.2.0",
     "@types/node": "^18.13.0",
     "@types/yargs": "^17.0.22",
     "boxen": "4.0",
     "chalk": "2.4",
     "yargs": "13.2"
+  },
+  "devDependencies": {
+    "@types/chalk": "^2.2.0"
   }
 }

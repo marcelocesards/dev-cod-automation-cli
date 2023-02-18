@@ -1,7 +1,9 @@
 import * as readline from 'readline';
+import Command from '../../commands/command-executor/command';
 
 export default class DefaultTerminal {
-    constructor(){
+    private command:any;
+    constructor(private commands:Command[]){
 
     }
 
@@ -18,17 +20,40 @@ export default class DefaultTerminal {
         */
         rl.setPrompt('> ');
         rl.prompt();
+
+        let newCommand = true;
         
         rl.on('line', (input) => {
             console.log(`Received: ${input}`);
             if(input === "exit")
                 rl.close();
-            else 
-                rl.prompt();
+            else {
+                if(newCommand){
+                    newCommand = false;
+                    const mensagem = this.executeCommand(input);   
+                    rl.setPrompt(mensagem);
+                    rl.prompt();                 
+                } else{
+                    newCommand = true;
+                    this.command.process(input);
+                    rl.setPrompt('> ');
+                    rl.prompt();
+                }
+            }
         });
         
         rl.on('close', () => {
             console.log('Exiting the simulation...');
         });
+    }
+
+    executeCommand(input:string){
+        const command = this.getCommand(input);
+        this.command = command;
+        return command.getPromptMessage();
+    }
+
+    getCommand(commandName:string):Command{
+        return this.commands.filter(c => c.getCommandName()===commandName)[0];
     }
 }

@@ -25,7 +25,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const readline = __importStar(require("readline"));
 class DefaultTerminal {
-    constructor() {
+    constructor(commands) {
+        this.commands = commands;
     }
     init() {
         const rl = readline.createInterface({
@@ -39,16 +40,37 @@ class DefaultTerminal {
         */
         rl.setPrompt('> ');
         rl.prompt();
+        let newCommand = true;
         rl.on('line', (input) => {
             console.log(`Received: ${input}`);
             if (input === "exit")
                 rl.close();
-            else
-                rl.prompt();
+            else {
+                if (newCommand) {
+                    newCommand = false;
+                    const mensagem = this.executeCommand(input);
+                    rl.setPrompt(mensagem);
+                    rl.prompt();
+                }
+                else {
+                    newCommand = true;
+                    this.command.process(input);
+                    rl.setPrompt('> ');
+                    rl.prompt();
+                }
+            }
         });
         rl.on('close', () => {
             console.log('Exiting the simulation...');
         });
+    }
+    executeCommand(input) {
+        const command = this.getCommand(input);
+        this.command = command;
+        return command.getPromptMessage();
+    }
+    getCommand(commandName) {
+        return this.commands.filter(c => c.getCommandName() === commandName)[0];
     }
 }
 exports.default = DefaultTerminal;
