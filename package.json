@@ -2,10 +2,10 @@
   "name": "dev-cod-automation",
   "version": "1.0.0",
   "description": "Code generator",
-  "main": "bin/app",
+  "main": "bin/app.js",
   "typings": "bin/index",
   "bin": {
-    "sud": "./bin/app"
+    "sud": "./bin/app.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -50,7 +50,6 @@ class UserNameCommand {
     process(input) {
         let args = process.argv;
         if (input) {
-            console.log('passei', input);
             this.printName(input);
             return;
         }
@@ -74,7 +73,6 @@ class UserNameCommand {
         }))();
     }
     printName(name) {
-        console.log('passei 2', name);
         console.log(name);
     }
 }
