@@ -35,6 +35,8 @@ export default class DefaultTerminal {
                     rl.prompt();                 
                 } else{
                     newCommand = true;
+                    console.log('input value',input);
+                    console.log('input type',typeof input)
                     this.command.process(input);
                     rl.setPrompt('> ');
                     rl.prompt();
