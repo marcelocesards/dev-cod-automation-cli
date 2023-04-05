@@ -36,13 +36,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const yargs_1 = __importDefault(require("yargs/yargs"));
-const fs = __importStar(require("fs"));
+const readline = __importStar(require("readline"));
 const path = __importStar(require("path"));
-class ReadApplicationCommand {
+class CreateDevopsScriptCommand {
     constructor() {
     }
     getPromptMessage() {
-        return '> Informe o diretorio da app: ';
+        return '> Informe o nome da app: ';
     }
     getCommandName() {
         return "read-app";
@@ -55,53 +55,41 @@ class ReadApplicationCommand {
                 return;
             }
             const parse = (0, yargs_1.default)(args)
-                .option("mp", { alias: "mainPackage",
-                describe: "Your name", type: "string", demandOption: false });
-            (() => __awaiter(this, arguments, void 0, function* () {
+                .option("cs", { alias: "create-script", describe: "Create devops script", type: "string", demandOption: "api" });
+            (() => __awaiter(this, void 0, void 0, function* () {
                 const argv = yield parse.argv;
-                arguments;
-                yield this.findMainClass(argv.mp || "");
+                // await this.findMainClass(argv.cs);
             }))();
         });
     }
     printName(name) {
         console.log(name);
     }
-    findMainClass(dir) {
+    findMainClass(type) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('finding main class');
-            const files = yield fs.promises.readdir(dir);
-            for (const file of files) {
-                const filePath = path.join(dir, file);
-                const stats = yield fs.promises.stat(filePath);
-                if (stats.isDirectory()) {
-                    const mainClass = yield this.findMainClass(filePath);
-                    if (mainClass) {
-                        return mainClass;
-                    }
-                }
-                else if (stats.isFile() && path.extname(file) === '.java') {
-                    const data = yield fs.promises.readFile(filePath, 'utf8');
-                    if (data.includes('public static void main(String[] args)')) {
-                        const packageName = yield this.findPackageName(filePath);
-                        return `${packageName}.${path.basename(file, '.java')}`;
-                    }
-                }
-            }
+            //read file ../../../../assets/api.md
+            const file = path.join(__dirname, `../../../../assets/api.md`);
+            console.log('arquivo carregado', file);
+            const name = yield this.promptAppName();
+            console.log(name);
             return null;
         });
     }
-    findPackageName(filePath) {
+    promptAppName() {
         return __awaiter(this, void 0, void 0, function* () {
-            const data = yield fs.promises.readFile(filePath, 'utf8');
-            const match = /package\s+([a-z_][a-z\d_]*(\.[a-z_][a-z\d_]*)*);/i.exec(data);
-            if (match) {
-                return match[1];
-            }
-            else {
-                throw new Error(`Could not find package declaration in ${filePath}.`);
-            }
+            //prompt user for input for the appliccation name
+            const rl = readline.createInterface({
+                input: process.stdin,
+                output: process.stdout
+            });
+            return new Promise((resolve, reject) => {
+                rl.question(this.getPromptMessage(), (answer) => {
+                    //type the name of the application
+                    const app = answer;
+                    resolve(app);
+                });
+            });
         });
     }
 }
-exports.default = ReadApplicationCommand;
+exports.default = CreateDevopsScriptCommand;
